@@ -46,14 +46,31 @@
 				};
 
 			// ignore clicks outside colour wheel
-			if (Math.abs(o.x) + Math.abs(o.y) > 1.375) {
-				console.log('outside wheel!');
+			// Pythagorean's Theorem
+			// x2 + y2 ≤ r2
+			if (!this.isInsideWheel(o)) {
+				console.log('outside wheel');
 				return false;
 			}
 
 			this.getAngle(o);
 
 			return o;
+
+		},
+
+		isInsideWheel: function (o) {
+
+			var x1 = Math.abs(o.x),
+				y1 = Math.abs(o.y),
+				sqrt = 0;
+			
+			x1 = Math.pow(x1, 2);
+			y1 = Math.pow(y1, 2);
+
+			sqrt = Math.sqrt(x1 + y1);
+
+			return sqrt <= 1 ? true : false;
 
 		},
 
