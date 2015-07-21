@@ -45,7 +45,7 @@
 					y: this.getYCoordinate(cursorY)
 				};
 
-			console.log(o);
+			this.getAngle(o);
 
 			return o;
 
@@ -73,7 +73,39 @@
 				// map [0, max] to [-1, 1]
 				y1 = (y / c) - 1;
 
-			return y1;
+			return y1 * -1;
+
+		},
+
+		getAngle: function (o) {
+
+			var rad = Math.atan2(Math.abs(o.x), Math.abs(o.y)),
+				deg = rad * (180 / Math.PI);
+
+			if (o.x > 0 && o.y > 0) {
+
+				// Q1 (res: 0 to 90)
+
+			} else if (o.x > 0 && o.y < 0) {
+
+				// Q2 (res: 90 to 0)
+				deg = (90 - deg) + 90;
+
+			} else if (o.x < 0 && o.y < 0) {
+
+				// Q3 (res: 90 to 0)
+				deg = deg + 180;
+
+			} else if (o.x < 0 && o.y > 0) {
+
+				// Q4 (res: 0 to 90)
+				deg = (90 - deg) + 270;
+
+			}
+
+			console.log('deg: ', deg);
+
+			return deg;
 
 		}
 
