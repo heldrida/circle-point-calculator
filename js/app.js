@@ -45,6 +45,12 @@
 					y: this.getYCoordinate(cursorY)
 				};
 
+			// ignore clicks outside colour wheel
+			if (Math.abs(o.x) + Math.abs(o.y) > 1.375) {
+				console.log('outside wheel!');
+				return false;
+			}
+
 			this.getAngle(o);
 
 			return o;
