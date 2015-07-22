@@ -1,7 +1,22 @@
-#wheel {
-	width: 500px;
-	height: 500px;
-	margin: 0 auto;
-	display: block;
-	position: relative;
+.wheel-container {
+	#wheel {
+		width: 500px;
+		height: 500px;
+		margin: 0 auto;
+		display: block;
+		position: relative;
+	}
+
+	.nav-wheel {
+		margin: 25px auto;
+		width: 50%;
+		text-align: center;
+
+		button {
+			display: inline-block;
+			background-color: #999;
+			color: #fff;
+			border: none;
+		}
+	}
 }
