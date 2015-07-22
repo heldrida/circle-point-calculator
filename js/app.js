@@ -3,6 +3,8 @@
 
 	function PointAngleFinder() {
 
+		this.offsetAngle = -4.7368;
+
 		this.init();
 
 	}
@@ -125,8 +127,6 @@
 				deg = (90 - deg) + 270;
 
 			}
-
-			console.log('deg: ', deg);
 
 			return deg;
 
