@@ -1,13 +1,16 @@
 .wheel-container {
 	#wheel {
+		position: relative;
+		z-index: 1;
 		width: 500px;
 		height: 500px;
 		margin: 0 auto;
 		display: block;
-		position: relative;
 	}
 
 	.nav-wheel {
+		position: relative;
+		z-index: 2;
 		margin: 25px auto;
 		width: 50%;
 		text-align: center;

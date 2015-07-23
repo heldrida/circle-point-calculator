@@ -15,7 +15,11 @@
 		init: function () {
 
 			this.element = {
-				'wheel': document.querySelector('#wheel')
+				'wheel': document.querySelector('#wheel'),
+				'nav': {
+					'previous': document.querySelector('.previous'),
+					'next': document.querySelector('.next')
+				}
 			};
 
 			this.center = {
@@ -23,18 +27,20 @@
 				y: this.element.wheel.offsetHeight / 2
 			};
 
+			this.currentRotation = 0;
+
 			// add listeners
 			this.listeners();
-
-		},
-
-		setup: function () {
 
 		},
 
 		listeners: function () {
 
 			this.element.wheel.addEventListener("click", this.mousePosition.bind(this));
+
+			for (var btn in this.element.nav) {
+				this.element.nav[btn].addEventListener('click', this.navHandler.bind(this));
+			}
 
 		},
 
@@ -66,7 +72,7 @@
 			var x1 = Math.abs(o.x),
 				y1 = Math.abs(o.y),
 				sqrt = 0;
-			
+
 			x1 = Math.pow(x1, 2);
 			y1 = Math.pow(y1, 2);
 
@@ -129,6 +135,23 @@
 			}
 
 			return deg;
+
+		},
+
+		navHandler: function (el) {
+
+			var direction = el.target.className.indexOf('next') > -1 ? 'next' : 'previous';
+
+			console.log(direction);
+
+			this.currentRotation += 30;
+
+			// rotate animation
+			TweenLite.to(this.element.wheel, 0.3, {
+				rotation: this.currentRotation,
+				transformOrigin:"50% 50%",
+				ease: Back.easeOut
+			});
 
 		}
 
