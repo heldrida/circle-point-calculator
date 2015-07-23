@@ -29,6 +29,9 @@
 
 			this.currentRotation = 0;
 
+			// total number of colours
+			this.coloursTotal = 38;
+
 			// add listeners
 			this.listeners();
 
@@ -140,15 +143,12 @@
 
 		navHandler: function (el) {
 
-			var direction = el.target.className.indexOf('next') > -1 ? 'next' : 'previous';
-
-			console.log(direction);
-
-			this.currentRotation += 30;
+			var direction = el.target.className.indexOf('next') > -1 ? 'next' : 'previous',
+				rotation = (360 / this.coloursTotal) * (direction === 'next' ? 1 : -1);
 
 			// rotate animation
 			TweenLite.to(this.element.wheel, 0.3, {
-				rotation: this.currentRotation,
+				rotation: rotation,
 				transformOrigin:"50% 50%",
 				ease: Back.easeOut
 			});
