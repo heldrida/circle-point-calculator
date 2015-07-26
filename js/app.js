@@ -231,13 +231,17 @@
 			var d = Math.abs(distance),
 				t = 0;
 
-			if (Math.abs(d) < 10) {
+			if (d < 10) {
 
 				t = 0.4;
 
-			} else if (Math.abs(d) < 20) {
+			} else if (d < 20) {
 
 				t = 0.8;
+
+			} else if (d === this.coloursTotal - 1) {
+
+				t = 0.4;
 
 			} else {
 
