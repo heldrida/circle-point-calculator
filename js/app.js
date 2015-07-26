@@ -15,7 +15,8 @@
 		init: function () {
 
 			this.element = {
-				'wheel': document.querySelector('#wheel'),
+				'wheelContainer': document.querySelector('#wheel'),
+				'wheel': document.querySelector('#wheel > img'),
 				'nav': {
 					'previous': document.querySelector('.previous'),
 					'next': document.querySelector('.next')

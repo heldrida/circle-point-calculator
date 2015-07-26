@@ -6,6 +6,11 @@
 		height: 500px;
 		margin: 0 auto;
 		display: block;
+		overflow: hidden;
+
+		img {
+			width: 100%; 
+		}
 	}
 
 	.nav-wheel {

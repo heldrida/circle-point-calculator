@@ -4,7 +4,10 @@
   width: 500px;
   height: 500px;
   margin: 0 auto;
-  display: block; }
+  display: block;
+  overflow: hidden; }
+  .wheel-container #wheel img {
+    width: 100%; }
 
 .wheel-container .nav-wheel {
   position: relative;
