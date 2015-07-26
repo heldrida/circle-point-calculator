@@ -27,6 +27,8 @@
 				y: this.element.wheel.offsetHeight / 2
 			};
 
+			this.currentIndex = 0;
+
 			this.currentRotation = 0;
 
 			// total number of colours
@@ -142,18 +144,64 @@
 		},
 
 		navHandler: function (el) {
+			
+			if (el.target.className.indexOf('next') > -1) {
 
-			var direction = el.target.className.indexOf('next') > -1 ? 'next' : 'previous',
-				rotation = (360 / this.coloursTotal) * (direction === 'next' ? 1 : -1);
+				this.rotateCounterClockWise();
+
+			} else {
+
+				this.rotateClockWise();
+
+			}
+
+		},
+
+		rotateClockWise: function(){
+
+			var targetIndex = this.currentIndex + 1 < this.coloursTotal ? this.currentIndex + 1 : 0;
+			
+			this.rotateToIndex(targetIndex);
+
+		},
+
+		rotateCounterClockWise: function(){
+
+			var targetIndex = this.currentIndex - 1 >= 0 ? this.currentIndex  - 1 : this.coloursTotal - 1;
+			
+			this.rotateToIndex(targetIndex);
+
+		},
+
+
+		rotateToIndex: function(targetIndex){
+
+			var distance = targetIndex - this.currentIndex,
+				rotation = distance * 360 / this.coloursTotal;
+
+			if(rotation > 180){
+
+				rotation = -(360 - rotation);
+
+			}
+
+			if(rotation < -180){
+
+				rotation = (360 + rotation);
+
+			}
+
+			this.currentIndex = targetIndex;
+			this.currentRotation += rotation;
 
 			// rotate animation
 			TweenLite.to(this.element.wheel, 0.3, {
-				rotation: rotation,
+				rotation: this.currentRotation,
 				transformOrigin:"50% 50%",
 				ease: Back.easeOut
 			});
 
-		}
+		},
 
 
 	};
