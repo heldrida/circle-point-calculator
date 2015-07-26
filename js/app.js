@@ -219,7 +219,7 @@
 			console.log('this.currentRotation', this.currentRotation);
 
 			// rotate animation
-			TweenLite.to(this.element.wheel, 3, {
+			TweenLite.to(this.element.wheel, 0.4, {
 				rotation: this.currentRotation,
 				transformOrigin:"50% 50%",
 				ease: Back.easeOut
