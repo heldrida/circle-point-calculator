@@ -24,8 +24,8 @@
 			};
 
 			this.center = {
-				x: this.element.wheel.offsetWidth / 2,
-				y: this.element.wheel.offsetHeight / 2
+				x: this.element.wheelContainer.offsetWidth / 2,
+				y: this.element.wheelContainer.offsetHeight / 2
 			};
 
 			this.currentIndex = 0;
@@ -91,7 +91,7 @@
 		getXCoordinate: function (x) {
 
 			var c = this.center.x,
-				x = x - this.element.wheel.offsetLeft,
+				x = x - this.element.wheelContainer.offsetLeft,
 				x1 = 0;
 
 				// map [0, max] to [-1, 1]
@@ -104,7 +104,7 @@
 		getYCoordinate: function (y) {
 
 			var c = this.center.y,
-				y = y - this.element.wheel.offsetTop,
+				y = y - this.element.wheelContainer.offsetTop,
 				y1 = 0;
 
 				// map [0, max] to [-1, 1]
