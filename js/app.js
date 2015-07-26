@@ -3,7 +3,7 @@
 
 	function PointAngleFinder() {
 
-		this.offsetAngle = -4.7368;
+		this.offsetAngle = 4.7368;
 
 		this.init();
 
@@ -57,7 +57,9 @@
 				o = {
 					x: this.getXCoordinate(cursorX),
 					y: this.getYCoordinate(cursorY)
-				};
+				},
+				angle = null,
+				index = 0;
 
 			// ignore clicks outside colour wheel
 			// Pythagorean's Theorem
@@ -67,9 +69,24 @@
 				return false;
 			}
 
-			this.getAngle(o);
+			angle = this.getAngle(o);
+
+			// get index
+			index = this.getIndexByAnglePosition(angle);
+
+			this.rotateToIndex(index);
 
 			return o;
+
+		},
+
+		getIndexByAnglePosition: function (angle) {
+
+			var i = Math.floor( (angle + this.offsetAngle) / (360 / 38) );
+
+			i = this.coloursTotal - i;
+
+			return i;
 
 		},
 
@@ -177,6 +194,8 @@
 
 		rotateToIndex: function(targetIndex){
 
+			console.log('rotateToIndex',targetIndex);
+
 			var distance = targetIndex - this.currentIndex,
 				rotation = distance * 360 / this.coloursTotal;
 
@@ -194,6 +213,8 @@
 
 			this.currentIndex = targetIndex;
 			this.currentRotation += rotation;
+
+			console.log('this.currentRotation', this.currentRotation);
 
 			// rotate animation
 			TweenLite.to(this.element.wheel, 0.3, {
