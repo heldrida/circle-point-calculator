@@ -71,6 +71,8 @@
 
 			angle = this.getAngle(o);
 
+			angle = angle - this.currentRotation;
+
 			// get index
 			index = this.getIndexByAnglePosition(angle);
 
