@@ -199,7 +199,8 @@
 			console.log('rotateToIndex',targetIndex);
 
 			var distance = targetIndex - this.currentIndex,
-				rotation = distance * 360 / this.coloursTotal;
+				rotation = distance * 360 / this.coloursTotal,
+				animTime = this.getAnimationTimeByDistance(distance);
 
 			if(rotation > 180){
 
@@ -216,16 +217,37 @@
 			this.currentIndex = targetIndex;
 			this.currentRotation += rotation;
 
-			console.log('this.currentRotation', this.currentRotation);
-
 			// rotate animation
-			TweenLite.to(this.element.wheel, 0.4, {
+			TweenLite.to(this.element.wheel, animTime, {
 				rotation: this.currentRotation,
 				transformOrigin:"50% 50%",
 				ease: Back.easeOut
 			});
 
 		},
+
+		getAnimationTimeByDistance: function (distance) {
+
+			var d = Math.abs(distance),
+				t = 0;
+
+			if (Math.abs(d) < 10) {
+
+				t = 0.4;
+
+			} else if (Math.abs(d) < 20) {
+
+				t = 0.8;
+
+			} else {
+
+				t = 1;
+
+			}
+
+			return t;
+
+		}
 
 
 	};
