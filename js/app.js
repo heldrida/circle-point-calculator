@@ -261,6 +261,4 @@
 
 	window.pointAngleFinder = pointAngleFinder;
 
-	console.log('test');
-
 })();
